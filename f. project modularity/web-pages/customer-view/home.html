@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<style>
+		
+			.sh-form{
+				width: 540px; padding-top: 20px; padding-bottom: 10px; padding-left: 20px;
+			}
+
+			.sh-label{
+				width: 100px; padding-top: 6px; padding-right: 10px; text-align: right;
+			}
+
+			.sh-input{
+				height: 35px;
+			}
+
+			.sh-book-attr{
+				padding: 2px;
+			}
+
+		</style>
+
+	</head>
+	
+
+
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body class="w3-light-grey">
+		
+		<!-- side tabs -->
+		<nav class="w3-sidenav w3-card-2 w3-white" style="width:250px">
+
+			<!-- logo -->
+			<div class="w3-blue-grey" style="padding-left: 23px; padding-top: 40px; padding-bottom: 30px;">
+				WEBSITE
+			</div>
+		  
+		  	<!-- user name -->
+		  	<div class="w3-container" style="padding-top: 20px; font-weight: bold; padding-bottom: 10px;">
+		  		User_Name
+		  	</div>
+
+		  	<!-- customer access -->
+			<a id="home_btn" href="#" class="w3-blue-grey">Home</a>
+			<a id="signout_btn" href="#">Sign Out</a>
+
+		</nav>
+		
+		<!-- page content -->
+		<div class="w3-container" style="margin-left:250px">
+			<div style="height:20px;">
+			</div>
+			
+			<!--search and title-->
+			<div class="w3-container" style="margin-bottom:10px;">
+				<span class="w3-text-blue-grey" style="font-size:27px; font-weight:bold; font-family: arial;">
+				SOME TABLE</span>
+			</div>
+
+			<!--book table-->
+			<div class="w3-container">
+
+				<table class="w3-table-all">
+
+				    <thead>
+				      <tr class="w3-dark-grey">
+				        <th>Title</th>
+				        <th>Price</th>
+				        <th></th>
+				      </tr>
+				    </thead>
+
+				    <tbody>
+				    </tbody>
+				    
+				  </table>
+			</div>
+			
+		</div>
+
+
+	</body>
+	
+
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+
+		$(document).ready(function(){
+		
+		    /* handle site navigation */
+			/******************************************/
+			$("#signout_btn").click(function(e){
+				var target_url = "http://127.0.0.1:8081/signout";
+      			$( location ).attr("href", target_url);
+			});
+
+		});
+
+
+	</script>
+	
+</html>
