@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</head>
+	
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body >
+
+		<div class='w3-conatiner w3-teal w3-center w3-xlarge w3-padding-16' style='height: 100px;'>
+			AJAX GET Request
+		</div>
+
+		
+
+		<div class='w3-conatiner w3-margin-top w3-center'>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<button id='test_btn' >get user info</button>
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>User Name : </label>
+				<label id='display_user_name' >null</label>
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>User Email : </label>
+				<label id='display_user_email' >null</label>
+			</div>
+			
+		</div>
+
+	</body>
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+		$(document).ready(function(){
+
+		    /* search form */
+			/******************************************/
+		    $('#test_btn').click(function(e){
+		    	var data_url = "http://127.0.0.1:8081/index/get_user_info";
+			    $.get(data_url, function(data, status){
+			    	// obtain data
+			    	var tmp = JSON.parse(data);
+			    	var user_name = tmp['user_name'];
+			    	var user_email = tmp['user_email'];
+			    	$('#display_user_name').text(user_name);
+			    	$('#display_user_email').text(user_email);
+			    });
+			});
+
+
+		});
+
+
+	</script>
+
+
+</html>
+

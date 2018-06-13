@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</head>
+	
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body >
+
+		<div class='w3-conatiner w3-teal w3-center w3-xlarge w3-padding-16' style='height: 100px;'>
+			AJAX GET Request
+		</div>
+
+		<div id='request_form' class='w3-conatiner w3-center w3-margin'>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>Email</label>
+				<input id='entered_user_email' type="text" name="user_email" />
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>Password</label>
+				<input id='entered_user_password' type="password" name="user_password" />
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<button id='test_btn' >Submit Data</button>
+			</div>
+
+		</div>
+
+		<div id='response_form' class='w3-conatiner w3-margin-top w3-center' style='display: none;'>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>Entered Email : </label>
+				<label id='display_user_email' >null</label>
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>Entered Password : </label>
+				<label id='display_user_password' >null</label>
+			</div>
+			
+		</div>
+
+
+	</body>
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+		$(document).ready(function(){
+
+	    	$('#test_btn').click(function(e){
+
+	    		var email = $("#entered_user_email").val();
+		    	var password = $("#entered_user_password").val();
+		    	var send_data = {
+		    		user_email : email,
+		    		user_password : password
+		    	};
+
+		    	var target_url = "http://127.0.0.1:8081/home/request";
+				$.post(target_url, send_data, function(data, status){
+					// obtain data
+			    	var tmp = JSON.parse(data);
+			    	var user_email = tmp['user_email'];
+			    	var user_password = tmp['user_password'];
+			    	$('#display_user_email').text(user_email);
+			    	$('#display_user_password').text(user_password);
+
+			    	$('#request_form').hide();
+			    	$('#response_form').show();
+				});
+
+	    	});
+
+		});
+
+
+	</script>
+
+
+</html>
+
