@@ -1,3 +1,8 @@
 a. install ExpressJS framework
 
 	npm install express --save
+
+
+b. install ExpressJS MySQL
+
+	npm install mysql

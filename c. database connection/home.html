@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</head>
+	
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body >
+
+		<div class='w3-conatiner w3-teal w3-center w3-xxlarge w3-padding-16' style='height: 100px;'>
+			Database Access
+		</div>
+
+		<!--book table-->
+		<div class="w3-container w3-center w3-margin-top">
+
+			<table id="book_table" class="w3-table-all">
+
+			    <thead>
+			      <tr class="w3-dark-grey">
+			        <th>Title</th>
+			        <th>Price</th>
+			      </tr>
+			    </thead>
+
+			    <tbody>
+			    </tbody>
+			    
+			  </table>
+		</div>
+
+
+	</body>
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+		var book_list = [];
+
+		$(document).ready(function(){
+
+	    	/* update rows AJAX */
+			var data_url = "http://127.0.0.1:8081/home/refresh_table";
+		    $.get(data_url, function(data, status){
+		    	// obtain data
+		    	book_list = JSON.parse(data);
+		    	update_books_view();
+		    });
+
+		});
+
+
+		function update_books_view()
+		{
+			var i;
+	    	for(i=0; i<book_list.length; i++)
+	    	{
+	    		var tmp_book = book_list[i];
+	    		var title = tmp_book["title"];
+	    		var price = tmp_book["price"];
+
+	    		var new_row = "<tr class='table_data'><td>"+title+"</td><td>"+price+"</td></tr>";
+
+	    		$("#book_table > tbody").append(new_row);
+	    	}
+		}
+
+
+	</script>
+
+
+</html>
+
