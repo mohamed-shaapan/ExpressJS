@@ -6,3 +6,6 @@ a. install ExpressJS framework
 b. install ExpressJS MySQL
 
 	npm install mysql
+
+
+c. install session in node

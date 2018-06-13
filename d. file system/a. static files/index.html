@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</head>
+	
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body >
+
+		<div class='w3-conatiner w3-teal w3-center w3-xlarge w3-padding-16' style='height: 100px;'>
+			static files
+		</div>
+
+		
+		<div class='w3-conatiner w3-margin-top w3-center'>
+			add files to 'public' dir to access them statically
+
+			<div class='w3-conatiner w3-padding-8'>
+				<button id='test_btn' >go to file</button>
+			</div>
+			
+		</div>
+
+	</body>
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+		$(document).ready(function(){
+
+		    /* search form */
+			/******************************************/
+			 $("#test_btn").click(function(e){
+				var target_url = "http://127.0.0.1:8081/images/test.png";
+      			$( location ).attr("href", target_url);
+			});
+
+		});
+
+
+	</script>
+
+
+</html>
+
