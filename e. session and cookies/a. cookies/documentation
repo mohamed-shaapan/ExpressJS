@@ -1,0 +1,13 @@
+a. import and use package
+-------------------------
+var cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+
+b. create cookie
+----------------
+res.cookie('user_email', some_value);
+
+c. delete cookie
+----------------
+res.clearCookie('user_email');

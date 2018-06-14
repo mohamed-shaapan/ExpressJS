@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- DEFINE HEADER -->
+	<!-- *********************************************** -->
+	<head>
+
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</head>
+	
+	<!-- DEFINE BODY -->
+	<!-- *********************************************** -->
+	<body >
+
+		<div class='w3-conatiner w3-teal w3-center w3-xxlarge w3-padding-16' style='height: 100px;'>
+			Cookies Test
+		</div>
+
+		<div id='register_data_form' class='w3-conatiner w3-center w3-margin w3-border' style='display: none;'>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>User Name</label>
+				<input id="register_user_name" />
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>School</label>
+				<input id="register_user_school" />
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<button id='register_btn'>register</button>
+			</div>
+
+		</div>
+
+		<div id='info_container' class='w3-conatiner w3-center w3-margin w3-border w3-red' style='display: none;'>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>User Name :</label>
+				<label id="display_user_name">Undefined</label>
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<label>School : </label>
+				<label id="display_user_school">Undefined</label>
+			</div>
+
+			<div class='w3-conatiner w3-padding-8'>
+				<button id='unregister_btn'>unregister</button>
+			</div>
+
+		</div>
+
+
+	</body>
+
+
+
+	<!-- POST-LOADING SCRIPTS -->
+	<!-- *********************************************** -->
+	<script>
+
+		$(document).ready(function(){
+
+			/* check if cookies are available */
+			if(getCookie('cookies_available_flag') == "true")
+				{ display_user_info(); }
+			else
+				{ display_register_form(); }
+
+
+			// set action listeners
+		    $('#register_btn').click(function(e){
+
+		    	var send_data = {
+		    		user_name : $("#register_user_name").val(),
+		    		user_school : $("#register_user_school").val()
+		    	};
+
+		    	var target_url = "http://127.0.0.1:8081/register";
+
+				$.post(target_url, send_data, function(data, status){
+					// obtain data
+					display_user_info();
+				});
+
+			});
+
+			$('#unregister_btn').click(function(e){
+
+		    	var send_data = {};
+
+		    	var target_url = "http://127.0.0.1:8081/unregister";
+
+				$.post(target_url, send_data, function(data, status){
+					// obtain data
+					display_register_form();
+				});
+
+			});
+
+		});
+
+
+		/* function to read cookie */
+		/* obtained from w3schools */
+		/*************************************************/
+		function getCookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+					if (c.indexOf(name) == 0) {
+					return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+
+
+		function display_user_info()
+		{
+			//alert(getCookie('user_name'));
+			$('#display_user_name').text( getCookie('user_name') );
+			$('#display_user_school').text( getCookie('user_school') );
+
+			$("#register_user_name").val('');
+		    $("#register_user_school").val('');
+			//alert($('#display_user_name').text());
+			//alert($('#display_user_school').text());
+			//alert('success');
+
+			$('#register_data_form').hide();
+			$("#info_container").show();
+		}
+
+		function display_register_form()
+		{
+			$("#info_container").hide();
+			$('#register_data_form').show();
+		}
+
+
+	</script>
+
+
+</html>
+

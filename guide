@@ -1,0 +1,22 @@
+/***********************************/
+/* online resources */
+/***********************************/
+
+	1. tutorialspoint:
+	https://www.tutorialspoint.com/expressjs/expressjs_sessions.htm
+
+
+
+/***********************************/
+/* install packages */
+/***********************************/
+a. install ExpressJS framework
+	npm install express --save
+
+b. install ExpressJS MySQL
+	npm install mysql
+
+c. install session in node
+
+d. install cookies
+	npm install --save cookie-parser
