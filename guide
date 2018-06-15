@@ -17,6 +17,7 @@ b. install ExpressJS MySQL
 	npm install mysql
 
 c. install session in node
+	npm install --save express-session
 
 d. install cookies
 	npm install --save cookie-parser
